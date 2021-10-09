@@ -9,9 +9,7 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container />
-
-  <div class="sample-box">임시 박스</div>
+  <Container :Instagram="Instagram"/>
 
   <div class="footer">
     <ul class="footer-button-plus">
@@ -23,9 +21,15 @@
 
 <script>
 import Container from './components/Container.vue'
+import Instagram from './data/instagram.js'
 
 export default {
   name: "App",
+  data() {
+    return {
+      Instagram: Instagram,
+    }
+  },
   components: {
     Container: Container,
   },
@@ -34,6 +38,4 @@ export default {
 
 <style>
 @import 'style.css';
-
-
 </style>
