@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Post :Instagram="Instagram" />
+    <Post :Instagram="Instagram[i]" v-for="a,i in Instagram" :key="i" />
   </div>
 </template>
 

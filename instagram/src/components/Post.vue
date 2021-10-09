@@ -1,16 +1,16 @@
 <template>
-  <div class="post" v-for="(a, i) in Instagram" :key="i">
+  <div class="post">
     <div class="post-header">
-      <div class="profile"></div>
-      <span class="profile-name">{{ a.name }}</span>
+      <div class="profile" :style="{ backgroundImage : `url(${Instagram.userImage})`}"></div>
+      <span class="profile-name">{{ Instagram.name }}</span>
     </div>
-    <div class="post-body"></div>
+    <div class="post-body" :style="{ backgroundImage : `url(${Instagram.postImage})`}"></div>
     <div class="post-content">
-      <p>{{ a.likes }}</p>
+      <p>{{ Instagram.likes }}</p>
       <p>
-        <strong>{{ a.filter }}</strong> {{ a.content }}
+        <strong>{{ Instagram.filter }}</strong> {{ Instagram.content }}
       </p>
-      <p class="date">{{ a.date }}</p>
+      <p class="date">{{ Instagram.date }}</p>
     </div>
   </div>
 </template>
@@ -19,7 +19,7 @@
 export default {
   name: "Post",
   props: {
-    Instagram: Array,
+    Instagram: Object,
   },
 };
 </script>
