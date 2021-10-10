@@ -9,22 +9,14 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <Container :Instagram="Instagram"/>
-  <button @click="more">더 보기</button>
+  <Container :Instagram="Instagram" :step="step" :urlFiles="urlFiles" />
 
   <div class="footer">
     <ul class="footer-button-plus">
-      <input type="file" id="file" class="inputfile" />
+      <input @change="upload" multiple accept="image/" type="file" id="file" class="inputfile" />
       <label for="file" class="input-plus">+</label>
     </ul>
   </div>
-
-  <button @click="step=0">버튼0</button>
-  <button @click="step=1">버튼1</button>
-  <button @click="step=2">버튼2</button>
-  <div v-if="step == 0">내용0</div>
-  <div v-if="step == 1">내용1</div>
-  <div v-if="step == 2">내용2</div>
     
 </template>
 
@@ -37,6 +29,7 @@ export default {
   name: "App",
   data() {
     return {
+      urlFiles: '',
       step: 0,
       Instagram: Instagram,
       Count: 0,
@@ -56,6 +49,14 @@ export default {
       .catch(err =>{
         console.log(err)  // GET https://codingapple1.github.io/vue/more3.json 404
       })
+    },
+    upload(e){                         // e 파라미터를 설정
+      let imageFiles = e.target.files; // 내가 업로드 한 파일의 모든게 담겨있다.
+      // console.log(imageFiles[0])    // File 내용 나온다. 이걸 사용한다!
+      let urlFiles = URL.createObjectURL(imageFiles[0]);
+      console.log(typeof urlFiles);
+      this.urlFiles = urlFiles;
+      this.step = 1;                   // 업로드 후 다음 페이지로 넘긴다.
     },
   },
 };
