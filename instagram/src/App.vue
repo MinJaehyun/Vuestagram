@@ -18,12 +18,16 @@
   @write="myWrite = $event"
   />
 
+  <button @click="$store.commit('nameChange')">{{ $store.state.name }}</button>
+  <!-- <button @click="$store.commit('addAge', 10)">{{ $store.state.age }}</button> -->
+
   <div class="footer">
     <ul class="footer-button-plus">
       <input @change="upload" multiple accept="image/" type="file" id="file" class="inputfile" />
       <label for="file" class="input-plus">+</label>
     </ul>
   </div>
+
     
 </template>
 

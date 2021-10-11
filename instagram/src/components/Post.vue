@@ -4,9 +4,21 @@
       <div class="profile" :style="{ backgroundImage : `url(${Instagram.userImage})`}"></div>
       <span class="profile-name">{{ Instagram.name }}</span>
     </div>
-    <div class="post-body" :style="{ backgroundImage : `url(${Instagram.postImage})`}"></div>
+
+    <!-- 만약 likes 가 0 이면 1 이 되도록 만들고, 만약 likes 가 1 이면 0 이 되도록 만들어라 -->
+    <div v-if="$store.state.likes == 0"
+    @click="$store.commit('zeroToOne')"
+    class="post-body" :style="{ backgroundImage : `url(${Instagram.postImage})`}"
+    ></div>
+    <div v-if="$store.state.likes == 1"
+    @click="$store.commit('oneToZero')"  
+    class="post-body" :style="{ backgroundImage : `url(${Instagram.postImage})`}"
+    ></div>
+    <!-- 위 방법 번거롭네.. 쉬운 방법 없나? -->
+
     <div class="post-content">
-      <p>{{ Instagram.likes }}</p>
+      <!-- <p>{{ Instagram.likes }}</p> -->
+      <p>{{ $store.state.likes }}</p>
       <p>
         <strong>{{ Instagram.filter }}</strong> {{ Instagram.content }}
       </p>

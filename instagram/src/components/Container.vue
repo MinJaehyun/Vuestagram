@@ -21,6 +21,7 @@
       <textarea class="write-box" @input="$emit('write', $event.target.value)">write!</textarea>
     </div>
   </div>
+  
 </template>
 
 <script>
