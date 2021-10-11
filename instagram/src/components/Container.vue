@@ -8,11 +8,9 @@
     <!-- image 를 담도록 한다 :style 적용하기 TODO, urlFiles -->
     <div class="upload-image" :style="{backgroundImage: `url(${urlFiles})`}"></div>
     <div class="filters">
-      <div class="filter-1"></div>
-      <div class="filter-1"></div>
-      <div class="filter-1"></div>
-      <div class="filter-1"></div>
-      <div class="filter-1"></div>
+      <FilterBox 
+      :filter="filter" v-for="filter in filterBox" :key="filter"
+      :urlFiles="urlFiles"></FilterBox>  
     </div>
   </div>
 
@@ -26,17 +24,20 @@
 </template>
 
 <script>
-import Post from "./Post.vue";
+import Post from "./Post.vue"
+import FilterBox from "./FilterBox.vue"
 
 export default {
   name: "Container",
   props: {
+    filterBox: Array,
     Instagram: Array,
     step: Number,
     urlFiles: String,
   },
   components: {
     Post: Post,
+    FilterBox: FilterBox,
   },
 };
 </script>

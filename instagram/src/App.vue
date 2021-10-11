@@ -13,6 +13,7 @@
   </div>
 
   <Container 
+  :filterBox="filterBox"
   :Instagram="Instagram" :step="step" :urlFiles="urlFiles" 
   @write="myWrite = $event"
   />
@@ -30,6 +31,7 @@
 import Container from './components/Container.vue'
 import Instagram from './data/instagram.js'
 import axios from 'axios'
+import filterBox from './data/filterBox'
 
 export default {
   name: "App",
@@ -40,6 +42,7 @@ export default {
       Instagram: Instagram,
       Count: 0,
       myWrite: '',
+      filterBox: filterBox,
     }
   },
   components: {
